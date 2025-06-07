@@ -1,0 +1,147 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden; /* 避免滚动条 */
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#toolbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000; /* 确保在最上层 */
+}
+
+#toolbar button, #toolbar input[type="range"] {
+    padding: 8px 12px;
+    margin: 0 5px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#toolbar button:hover {
+    background-color: #777;
+}
+
+#scene-container {
+    flex-grow: 1; /* 占据剩余空间 */
+    position: relative; /* 为 tooltip 定位 */
+    background-color: #e0e0e0;
+}
+
+#parts-list-sidebar {
+    position: fixed;
+    right: -300px; /* 初始隐藏在右侧 */
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+#parts-list-sidebar.visible {
+    right: 0;
+}
+
+#parts-list-sidebar h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#parts-ul {
+    list-style: none;
+    padding: 0;
+}
+
+#parts-ul li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#parts-ul li:hover {
+    background-color: #f0f0f0;
+}
+
+#info-bar {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#info-bar p {
+    margin: 5px 0;
+}
+
+#rotation-controls button {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    margin: 2px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#rotation-controls button:hover {
+    background-color: #888;
+}
+
+#tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    pointer-events: none; /* 避免遮挡鼠标事件 */
+    font-size: 12px;
+    z-index: 1001;
+    max-width: 250px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #toolbar {
+        flex-direction: column;
+    }
+    #toolbar button, #toolbar input[type="range"] {
+        margin: 5px 0;
+        width: 90%;
+    }
+    #parts-list-sidebar {
+        width: 200px;
+        right: -220px;
+    }
+    #info-bar {
+        font-size: 12px;
+    }
+    #rotation-controls button {
+        padding: 4px 6px;
+    }
+}

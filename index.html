@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交互式木船结构</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="toolbar">
+        <button id="toggle-disassemble">拆解/组装</button>
+        <input type="range" id="zoom-slider" min="0.5" max="3" step="0.1" value="1">
+        <button id="toggle-parts-list">部件列表</button>
+    </div>
+
+    <div id="scene-container"></div>
+
+    <div id="parts-list-sidebar" class="hidden">
+        <h3>部件列表</h3>
+        <ul id="parts-ul">
+            <!-- 部件列表将由 JavaScript 动态填充 -->
+        </ul>
+    </div>
+
+    <div id="info-bar">
+        <p id="part-info-name">部件名称: 未选择</p>
+        <p id="part-info-description">描述: -</p>
+        <p id="part-info-history">历史背景: -</p>
+        <div id="rotation-controls">
+            <span>旋转控制:</span>
+            <button id="rotate-x-pos">X+</button>
+            <button id="rotate-x-neg">X-</button>
+            <button id="rotate-y-pos">Y+</button>
+            <button id="rotate-y-neg">Y-</button>
+            <button id="rotate-z-pos">Z+</button>
+            <button id="rotate-z-neg">Z-</button>
+        </div>
+    </div>
+
+    <div id="tooltip" class="hidden">
+        <p id="tooltip-name"></p>
+        <p id="tooltip-function"></p>
+        <p id="tooltip-history"></p>
+    </div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js",
+                "three/addons/": "./jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
